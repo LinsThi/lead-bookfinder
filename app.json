@@ -1,0 +1,11 @@
+{
+  "expo": {
+    "name": "lead-bookfinder",
+    "slug": "lead-bookfinder",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  },
+  "name": "lead-bookfinder"
+}
