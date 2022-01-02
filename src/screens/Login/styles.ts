@@ -13,6 +13,6 @@ export const ContainerInput = styled.View``;
 export const ContainerButon = styled.View``;
 
 export const Image = styled.Image`
-  width: 200px;
-  height: 200px;
+  width: 150px;
+  height: 150px;
 `;
