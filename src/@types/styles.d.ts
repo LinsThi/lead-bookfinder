@@ -7,11 +7,13 @@ type ColorProps = {
   FONT_COLOR: string;
   FONT_COLOR_LIGHT: string;
   ICON_COLOR: string;
+  ICON_COLOR_HEADER: string;
 };
 
 type SizeProps = {
   INPUT_SIZE: number;
   ICON_SIZE: number;
+  ICON_SIZE_HEADER: number;
 };
 
 declare module 'styled-components' {

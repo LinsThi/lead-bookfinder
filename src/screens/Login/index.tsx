@@ -1,18 +1,26 @@
+import { useNavigation } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
-import React, { useContext, useState } from 'react';
+import React, { useCallback, useContext, useState } from 'react';
 import { ThemeContext } from 'styled-components/native';
 
 import Input from '~/components/Input';
 import { NewText } from '~/components/Text';
 
+import { HOME_SCREEN } from '~/constants/routes';
+
 import * as S from './styles';
 
 export function Login() {
   const { Colors } = useContext(ThemeContext);
+  const navigation = useNavigation();
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+
+  const handleLogin = useCallback(() => {
+    navigation.navigate(HOME_SCREEN);
+  }, [navigation]);
 
   return (
     <S.Container>
@@ -69,7 +77,7 @@ export function Login() {
           style={S.LinearGradientButton}
           locations={[0.5, 1]}
         >
-          <S.ButtonLogin>
+          <S.ButtonLogin onPress={() => handleLogin()}>
             <NewText fontColor={Colors.FONT_COLOR_LIGHT}>Entrar</NewText>
           </S.ButtonLogin>
         </LinearGradient>
