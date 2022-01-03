@@ -3,6 +3,11 @@ import React, { useContext } from 'react';
 import { useDispatch } from 'react-redux';
 import { ThemeContext } from 'styled-components/native';
 
+import {
+  decrementFontAction,
+  incrementFontAction,
+  restoreFontAction,
+} from '~/store/ducks/font/action';
 import { themeToogleAction } from '~/store/ducks/themes/action';
 
 import * as S from './styles';
@@ -27,15 +32,15 @@ export function Header() {
           </S.Button>
 
           <S.ContainerFont>
-            <S.Button>
+            <S.Button onPress={() => dispatch(decrementFontAction())}>
               <S.DecreaseIncreaseFont>A-</S.DecreaseIncreaseFont>
             </S.Button>
 
-            <S.Button>
+            <S.Button onPress={() => dispatch(restoreFontAction())}>
               <S.RestoreFont>A</S.RestoreFont>
             </S.Button>
 
-            <S.Button>
+            <S.Button onPress={() => dispatch(incrementFontAction())}>
               <S.DecreaseIncreaseFont>A+</S.DecreaseIncreaseFont>
             </S.Button>
           </S.ContainerFont>

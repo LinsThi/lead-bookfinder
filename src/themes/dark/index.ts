@@ -10,6 +10,7 @@ export default {
   },
 
   Sizes: {
+    FONTSIZE_INPUT: 18,
     INPUT_SIZE: 20,
     ICON_SIZE: 20,
     ICON_SIZE_HEADER: 25,

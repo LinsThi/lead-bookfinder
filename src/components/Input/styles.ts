@@ -10,6 +10,7 @@ interface IconInputProps {
 
 interface TextInputProps {
   iconRight?: string;
+  fontSize: number;
 }
 
 export const InputWrapper = styled.View`
@@ -48,6 +49,7 @@ export const InputLogin = styled.TextInput<TextInputProps>`
   width: ${({ iconRight }) => (iconRight ? 90 : 100)}%;
   padding-right: 10px;
   height: 53px;
+  font-size: ${({ fontSize }) => fontSize}px;
 `;
 
 export const Button = styled.TouchableOpacity``;
