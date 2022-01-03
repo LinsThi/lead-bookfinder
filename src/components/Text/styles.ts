@@ -8,4 +8,5 @@ interface TextProps {
 export const Text = styled.Text<TextProps>`
   font-size: ${({ fontSize }) => fontSize}px;
   color: ${({ fontColor, theme }) => fontColor || theme.Colors.FONT_COLOR};
+  font-weight: bold;
 `;
