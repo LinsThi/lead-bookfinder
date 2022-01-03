@@ -1,11 +1,15 @@
 import { LinearGradient } from 'expo-linear-gradient';
 import React, { useContext } from 'react';
+import { useDispatch } from 'react-redux';
 import { ThemeContext } from 'styled-components/native';
+
+import { themeToogleAction } from '~/store/ducks/themes/action';
 
 import * as S from './styles';
 
 export function Header() {
   const { Colors } = useContext(ThemeContext);
+  const dispatch = useDispatch();
 
   return (
     <S.Container>
@@ -18,7 +22,7 @@ export function Header() {
         start={{ x: 0.4, y: 0 }}
       >
         <S.ContainerButton>
-          <S.Button>
+          <S.Button onPress={() => dispatch(themeToogleAction())}>
             <S.IconButton iconType="font" name="adjust" />
           </S.Button>
 
