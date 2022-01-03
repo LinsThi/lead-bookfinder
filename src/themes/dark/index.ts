@@ -1,9 +1,17 @@
 export default {
   Colors: {
+    BACKGROUND: '#000000',
+    BACKGROUND_GRADIENT_LIGHT: '#F5851F',
+    BACKGROUND_GRADIENT_DARK: '#F45D27',
     FONT_COLOR: '#FFFF00',
+    FONT_COLOR_LIGHT: '#FFFF00',
+    ICON_COLOR: '#FFFF00',
+    ICON_COLOR_HEADER: '#FFFF00',
   },
 
   Sizes: {
     INPUT_SIZE: 20,
+    ICON_SIZE: 20,
+    ICON_SIZE_HEADER: 25,
   },
 };
