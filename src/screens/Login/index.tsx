@@ -1,26 +1,28 @@
 import { useNavigation } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
 import React, { useCallback, useContext, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { ThemeContext } from 'styled-components/native';
 
 import Input from '~/components/Input';
 import { NewText } from '~/components/Text';
 
-import { HOME_SCREEN } from '~/constants/routes';
+import { loginAction } from '~/store/ducks/user/action';
 
 import * as S from './styles';
 
 export function Login() {
   const { Colors } = useContext(ThemeContext);
   const navigation = useNavigation();
+  const dispatch = useDispatch();
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
   const handleLogin = useCallback(() => {
-    navigation.navigate(HOME_SCREEN);
-  }, [navigation]);
+    dispatch(loginAction(username, password));
+  }, [dispatch, username, password]);
 
   return (
     <S.Container>
