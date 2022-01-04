@@ -16,9 +16,11 @@ import { Login } from '~/screens/Login';
 import { createTheme } from './utils';
 
 const Stack = createStackNavigator();
+const StackLogin = createStackNavigator();
 
 export function RootStack() {
   const { theme } = useSelector((state: AplicationState) => state.theme);
+  const { isLogged } = useSelector((state: AplicationState) => state.user);
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -29,19 +31,23 @@ export function RootStack() {
       >
         <ThemeProvider theme={createTheme(theme)}>
           <NavigationContainer>
-            <Stack.Navigator initialRouteName={LOGIN_SCREEN}>
-              <Stack.Screen
-                name={LOGIN_SCREEN}
-                component={Login}
-                options={{ header: props => <Header {...props} /> }}
-              />
-
-              <Stack.Screen
-                name={HOME_SCREEN}
-                component={Home}
-                options={{ header: props => <Header {...props} /> }}
-              />
-            </Stack.Navigator>
+            {isLogged ? (
+              <Stack.Navigator initialRouteName={HOME_SCREEN}>
+                <Stack.Screen
+                  name={HOME_SCREEN}
+                  component={Home}
+                  options={{ header: props => <Header {...props} /> }}
+                />
+              </Stack.Navigator>
+            ) : (
+              <StackLogin.Navigator initialRouteName={LOGIN_SCREEN}>
+                <StackLogin.Screen
+                  name={LOGIN_SCREEN}
+                  component={Login}
+                  options={{ header: props => <Header {...props} /> }}
+                />
+              </StackLogin.Navigator>
+            )}
           </NavigationContainer>
         </ThemeProvider>
       </KeyboardAvoidingView>
