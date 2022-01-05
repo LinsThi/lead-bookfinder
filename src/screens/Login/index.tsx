@@ -1,6 +1,6 @@
-import { useNavigation } from '@react-navigation/native';
 import { LinearGradient } from 'expo-linear-gradient';
-import React, { useCallback, useContext, useState } from 'react';
+import { useFormik } from 'formik';
+import React, { useContext, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { ThemeContext } from 'styled-components/native';
 
@@ -9,36 +9,49 @@ import { NewText } from '~/components/Text';
 
 import { loginAction } from '~/store/ducks/user/action';
 
+import { validationSchema } from './validation';
+
 import * as S from './styles';
+
+interface DataProps {
+  username: string;
+  password: string;
+}
 
 export function Login() {
   const { Colors } = useContext(ThemeContext);
-  const navigation = useNavigation();
   const dispatch = useDispatch();
 
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleLogin = useCallback(() => {
-    dispatch(loginAction(username, password));
-  }, [dispatch, username, password]);
+  function handleLogin(data: DataProps) {
+    dispatch(loginAction(data.username, data.password));
+  }
+
+  const { handleSubmit, dirty, handleChange, values, errors } = useFormik({
+    initialValues: {
+      username: '',
+      password: '',
+    },
+    validationSchema,
+    onSubmit: handleLogin,
+    validateOnChange: false,
+  });
 
   return (
     <S.Container>
       <LinearGradient
         colors={[
-          Colors.BACKGROUND_GRADIENT_LIGHT,
           Colors.BACKGROUND_GRADIENT_DARK,
+          Colors.BACKGROUND_GRADIENT_LIGHT,
         ]}
         style={S.LinearGradient}
-        locations={[0.5, 1]}
         start={{ x: 1, y: 0 }}
       >
         <S.ContainerImage>
           <S.Image
             source={{
-              uri: 'https://cdn.discordapp.com/attachments/689286899835207713/927389322452279356/1954934.png',
+              uri: 'https://cdn.discordapp.com/attachments/689286899835207713/928343797010665503/5594134-removebg-preview.png',
             }}
           />
 
@@ -55,15 +68,17 @@ export function Login() {
           placeholder="Usuário"
           iconLeft="person"
           iconType="ionicons"
-          value={username}
-          onChangeText={setUsername}
+          value={values.username}
+          onChangeText={handleChange('username')}
+          error={errors.username}
         />
 
         <Input
           placeholder="Senha"
           iconLeft="lock"
-          value={password}
-          onChangeText={setPassword}
+          value={values.password}
+          onChangeText={handleChange('password')}
+          error={errors.password}
           secureTextEntry={!showPassword}
           iconAction={() => setShowPassword(!showPassword)}
           iconRight={showPassword ? 'eye-off' : 'eye'}
@@ -73,13 +88,13 @@ export function Login() {
       <S.ContainerButon>
         <LinearGradient
           colors={[
-            Colors.BACKGROUND_GRADIENT_LIGHT,
             Colors.BACKGROUND_GRADIENT_DARK,
+            Colors.BACKGROUND_GRADIENT_LIGHT,
           ]}
           style={S.LinearGradientButton}
-          locations={[0.5, 1]}
+          start={{ x: 1, y: 0 }}
         >
-          <S.ButtonLogin onPress={() => handleLogin()}>
+          <S.ButtonLogin onPress={() => handleSubmit()}>
             <NewText fontColor={Colors.FONT_COLOR_LIGHT}>Entrar</NewText>
           </S.ButtonLogin>
         </LinearGradient>

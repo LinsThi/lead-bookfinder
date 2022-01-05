@@ -8,6 +8,11 @@ type ColorProps = {
   FONT_COLOR_LIGHT: string;
   ICON_COLOR: string;
   ICON_COLOR_HEADER: string;
+  INPUT_TEXT_COLOR: string;
+  BORDER_COLOR_INPUT: string;
+  BORDER_COLOR_BUTTON: string;
+  ERROR_COLOR: string;
+  SEARCH_BAR_COLOR: string;
 };
 
 type SizeProps = {

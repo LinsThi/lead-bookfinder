@@ -29,3 +29,8 @@ export const IconImg = styled(Icon).attrs<IconProps>(
     color: theme.Colors.ICON_COLOR_HEADER,
   }),
 )<IconProps>``;
+
+export const LinearGradient = {
+  width: '100%',
+  borderBottomLeftRadius: 100,
+};
