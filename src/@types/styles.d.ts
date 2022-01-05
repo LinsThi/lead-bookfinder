@@ -12,6 +12,7 @@ type ColorProps = {
 
 type SizeProps = {
   FONTSIZE_INPUT: number;
+  FONTSIZE_SEARCH: number;
   INPUT_SIZE: number;
   ICON_SIZE: number;
   ICON_SIZE_HEADER: number;
