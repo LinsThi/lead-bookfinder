@@ -20,11 +20,11 @@ export function Header() {
     <S.Container>
       <LinearGradient
         colors={[
-          Colors.BACKGROUND_GRADIENT_LIGHT,
           Colors.BACKGROUND_GRADIENT_DARK,
+          Colors.BACKGROUND_GRADIENT_LIGHT,
         ]}
         style={S.LinearGradient}
-        start={{ x: 0.4, y: 0 }}
+        start={{ x: 0.8, y: 0 }}
       >
         <S.ContainerButton>
           <S.Button onPress={() => dispatch(themeToogleAction())}>

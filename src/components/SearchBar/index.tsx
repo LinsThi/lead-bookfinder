@@ -18,13 +18,17 @@ export function SearchBar({
   ...rest
 }: TextInputProps & SearchBarProps) {
   const { delta } = useSelector((state: AplicationState) => state.font);
-  const { Sizes } = useContext(ThemeContext);
+  const { Sizes, Colors } = useContext(ThemeContext);
   const fontSizeSearch = Sizes.FONTSIZE_SEARCH + delta;
 
   return (
     <S.Container>
       <S.IconInput name={iconName} iconType={iconType} />
-      <S.InputSearch {...rest} fontSize={fontSizeSearch} />
+      <S.InputSearch
+        {...rest}
+        fontSize={fontSizeSearch}
+        placeholderTextColor={Colors.INPUT_TEXT_COLOR}
+      />
     </S.Container>
   );
 }

@@ -11,6 +11,7 @@ interface InputProps {
   iconRight?: string;
   iconLeft?: string;
   iconType?: string;
+  error?: any;
   iconAction?: () => void;
 }
 
@@ -19,6 +20,7 @@ const Input: React.FC<TextInputProps & InputProps> = ({
   iconLeft,
   iconType,
   iconAction,
+  error,
   ...rest
 }: InputProps) => {
   const { Colors, Sizes } = useContext(ThemeContext);
@@ -27,18 +29,19 @@ const Input: React.FC<TextInputProps & InputProps> = ({
   const fontSizeInput = Sizes.FONTSIZE_INPUT;
 
   return (
-    <S.InputWrapper
-      style={{
-        borderBottomColor: Colors.BACKGROUND_GRADIENT_LIGHT,
-        borderBottomWidth: 1,
-      }}
-    >
-      <S.ContainerInputIcon>
+    <S.InputWrapper>
+      <S.ContainerInputIcon
+        style={{
+          borderBottomColor: Colors.BORDER_COLOR_INPUT,
+          borderBottomWidth: 2,
+        }}
+      >
         {iconLeft && <S.IconInput iconType={iconType} name={iconLeft} />}
         <S.Container>
           <S.ContainerInput>
             <S.InputLogin
               {...rest}
+              placeholderTextColor={Colors.INPUT_TEXT_COLOR}
               iconRight={iconRight}
               fontSize={delta + fontSizeInput}
             />
@@ -50,6 +53,7 @@ const Input: React.FC<TextInputProps & InputProps> = ({
           </S.ContainerInput>
         </S.Container>
       </S.ContainerInputIcon>
+      {error && <S.ErrorMessage fontSize={14}>{error}</S.ErrorMessage>}
     </S.InputWrapper>
   );
 };

@@ -14,7 +14,7 @@ interface TextInputProps {
 export const Container = styled.View`
   width: 90%;
   flex-direction: row;
-  background: #ff9966;
+  background: ${({ theme }) => theme.Colors.SEARCH_BAR_COLOR};
   border-radius: 7px;
   padding: 5px 5px;
 `;
