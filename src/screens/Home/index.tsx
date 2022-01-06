@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import { decode } from 'html-entities';
 import React, { useState, useContext, useCallback, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,6 +9,7 @@ import { SearchBar } from '~/components/SearchBar';
 import { NewText } from '~/components/Text';
 
 import type { AplicationState } from '~/@types/Entity/AplicationState';
+import { BOOK_SCREEN } from '~/constants/routes';
 import {
   restoreBookListAction,
   searchBookAction,
@@ -21,6 +23,7 @@ export function Home() {
     (state: AplicationState) => state.books,
   );
 
+  const navigation = useNavigation();
   const dispatch = useDispatch();
 
   const [searchBook, setSearchBook] = useState('');
@@ -35,25 +38,33 @@ export function Home() {
 
   function renderBooks(item: any) {
     return (
-      <S.ContainerRenderBook>
-        <S.ImageBookThumb
-          source={
-            item.item.volumeInfo.imageLinks
-              ? { uri: item.item.volumeInfo.imageLinks.smallThumbnail }
-              : { uri: 'https://mrb.imgix.net/assets/default-book.png' }
-          }
-        />
+      <S.Button
+        onPress={() =>
+          navigation.navigate(BOOK_SCREEN, { bookSelected: item.item })
+        }
+      >
+        <S.ContainerRenderBook>
+          <S.ImageBookThumb
+            source={
+              item.item.volumeInfo.imageLinks
+                ? { uri: item.item.volumeInfo.imageLinks.smallThumbnail }
+                : { uri: 'https://mrb.imgix.net/assets/default-book.png' }
+            }
+          />
 
-        <S.ContainerBookInfo>
-          <NewText fontSize={18}>{decode(item.item.volumeInfo.title)}</NewText>
-          <NewText fontSize={15}>
-            Author(a):{' '}
-            {item.item.volumeInfo.authors
-              ? decode(item.item.volumeInfo.authors[0])
-              : 'Sem informação'}
-          </NewText>
-        </S.ContainerBookInfo>
-      </S.ContainerRenderBook>
+          <S.ContainerBookInfo>
+            <NewText fontSize={18}>
+              {decode(item.item.volumeInfo.title)}
+            </NewText>
+            <NewText fontSize={15}>
+              Autor(a):{' '}
+              {item.item.volumeInfo.authors
+                ? decode(item.item.volumeInfo.authors[0])
+                : 'Sem informação'}
+            </NewText>
+          </S.ContainerBookInfo>
+        </S.ContainerRenderBook>
+      </S.Button>
     );
   }
 

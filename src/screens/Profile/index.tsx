@@ -214,7 +214,9 @@ export function Profile() {
         />
       </S.ContainerInfo>
 
-      <Baseboard buttonDisabled="perfil" />
+      <S.ContainerBase>
+        <Baseboard buttonDisabled="perfil" />
+      </S.ContainerBase>
       <ModalUser visible={visible} setVisible={setVisible} />
     </S.Container>
   );
