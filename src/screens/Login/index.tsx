@@ -4,6 +4,7 @@ import React, { useContext, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { ThemeContext } from 'styled-components/native';
 
+import { Button } from '~/components/Button';
 import Input from '~/components/Input';
 import { NewText } from '~/components/Text';
 
@@ -86,18 +87,11 @@ export function Login() {
       </S.ContainerInput>
 
       <S.ContainerButon>
-        <LinearGradient
-          colors={[
-            Colors.BACKGROUND_GRADIENT_DARK,
-            Colors.BACKGROUND_GRADIENT_LIGHT,
-          ]}
-          style={S.LinearGradientButton}
-          start={{ x: 1, y: 0 }}
-        >
-          <S.ButtonLogin onPress={() => handleSubmit()}>
-            <NewText fontColor={Colors.FONT_COLOR_LIGHT}>Entrar</NewText>
-          </S.ButtonLogin>
-        </LinearGradient>
+        <Button
+          title="Entrar"
+          onPress={() => handleSubmit()}
+          disabled={!dirty}
+        />
       </S.ContainerButon>
     </S.Container>
   );

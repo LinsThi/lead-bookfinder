@@ -41,7 +41,7 @@ const Input: React.FC<TextInputProps & InputProps> = ({
           <S.ContainerInput>
             <S.InputLogin
               {...rest}
-              placeholderTextColor={Colors.INPUT_TEXT_COLOR}
+              placeholderTextColor={Colors.PLACEHOLDER_INPUT_TEXT_COLOR}
               iconRight={iconRight}
               fontSize={delta + fontSizeInput}
             />
