@@ -53,3 +53,7 @@ export const ImageBookThumb = styled.Image`
 `;
 
 export const Indicator = styled.ActivityIndicator``;
+
+export const Button = styled.TouchableOpacity`
+  border: 1px ${({ theme }) => theme.Colors.BORDER_COLOR_BUTTON};
+`;

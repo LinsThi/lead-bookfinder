@@ -22,6 +22,10 @@ export const ContainerInfo = styled.ScrollView`
   margin-top: 50px;
 `;
 
+export const ContainerBase = styled.View`
+  width: 100%;
+`;
+
 export const ImageProfile = styled.Image`
   width: 95px;
   height: 95px;

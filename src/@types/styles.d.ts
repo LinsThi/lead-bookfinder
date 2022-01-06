@@ -7,6 +7,7 @@ type ColorProps = {
   BUTTON_DISABLED: string;
   FONT_COLOR: string;
   FONT_COLOR_LIGHT: string;
+  FONT_COLOR_CLICKABLE: string;
   ICON_COLOR: string;
   ICON_COLOR_HEADER: string;
   INPUT_TEXT_COLOR: string;
