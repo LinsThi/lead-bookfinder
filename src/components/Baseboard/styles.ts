@@ -8,7 +8,6 @@ interface IconProps {
 }
 
 export const Container = styled.View`
-  width: 100%;
   background: ${({ theme }) => theme.Colors.BACKGROUND_GRADIENT_DARK};
 `;
 
@@ -29,8 +28,3 @@ export const IconImg = styled(Icon).attrs<IconProps>(
     color: theme.Colors.ICON_COLOR_HEADER,
   }),
 )<IconProps>``;
-
-export const LinearGradient = {
-  width: '100%',
-  borderBottomLeftRadius: 100,
-};

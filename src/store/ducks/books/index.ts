@@ -31,6 +31,8 @@ const reducer: Reducer<BookState> = (
         loadingSearchBooks: false,
         errorGetBooks: true,
       };
+    case BookTypes.LIST_BOOK_RESTORE:
+      return INITIAL_STATE;
     default:
       return state;
   }

@@ -1,6 +1,7 @@
 import { action } from 'typesafe-actions';
 
 import type {
+  RestoreListBookProps,
   SearchBookErrorProps,
   SearchBookProps,
   SearchBookSuccessProps,
@@ -19,3 +20,6 @@ export const searchBookSucessAction = (
 
 export const searchBookErrorAction = (): SearchBookErrorProps =>
   action(BookTypes.BOOK_SEARCH_ERROR);
+
+export const restoreBookListAction = (): RestoreListBookProps =>
+  action(BookTypes.LIST_BOOK_RESTORE);

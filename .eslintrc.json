@@ -28,6 +28,7 @@
   ],
   "rules": {
     "prettier/prettier": ["error", { "endOfLine": "crlf" }],
+    "no-nested-ternary": "off",
     "react/function-component-definition": "off",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
