@@ -18,14 +18,38 @@ export const ContainerSearch = styled.View`
 `;
 
 export const ContainerBooks = styled.View`
-  justify-content: center;
-  align-items: center;
   flex: 1;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const ContainerRenderBook = styled.View`
+  width: 80%;
+  flex-direction: row;
+  padding: 15px 7px;
+`;
+
+export const ContainerBookInfo = styled.View`
+  padding-left: 7px;
+  padding-right: 10px;
+`;
+
+export const ContainerBase = styled.View`
+  width: 100%;
+`;
+
+export const FlatBooks = styled.FlatList`
+  width: 100%;
 `;
 
 export const ImageBook = styled.Image`
   width: 200px;
   height: 200px;
+`;
+
+export const ImageBookThumb = styled.Image`
+  width: 100px;
+  height: 100px;
 `;
 
 export const Indicator = styled.ActivityIndicator``;

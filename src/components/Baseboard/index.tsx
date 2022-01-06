@@ -25,7 +25,6 @@ export function Baseboard({ buttonDisabled = '' }: BaseboardProps) {
           Colors.BACKGROUND_GRADIENT_LIGHT,
           Colors.BACKGROUND_GRADIENT_DARK,
         ]}
-        style={S.LinearGradient}
         start={{ x: 1, y: 0 }}
       >
         <S.ContainerButton>
