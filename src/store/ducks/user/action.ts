@@ -1,6 +1,12 @@
 import { action } from 'typesafe-actions';
 
-import type { LoginActionProps, LogoutActionProps } from './types';
+import type {
+  LoginActionProps,
+  LogoutActionProps,
+  UpdateAvatarActionProps,
+  UpdateUserActionProps,
+  UserProps,
+} from './types';
 import { UserType } from './types';
 
 export const loginAction = (
@@ -10,3 +16,10 @@ export const loginAction = (
 
 export const logoutAction = (): LogoutActionProps =>
   action(UserType.USER_LOGOUT);
+
+export const updateUserAction = (
+  currentUser: UserProps,
+): UpdateUserActionProps => action(UserType.USER_UPDATE, { currentUser });
+
+export const updateAvatarAction = (avatar: string): UpdateAvatarActionProps =>
+  action(UserType.USER_UPDATE_AVATAR, { avatar });

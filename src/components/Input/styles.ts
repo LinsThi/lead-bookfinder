@@ -52,6 +52,7 @@ export const InputLogin = styled.TextInput<TextInputProps>`
   padding-right: 10px;
   height: 53px;
   font-size: ${({ fontSize }) => fontSize}px;
+  color: ${({ theme }) => theme.Colors.INPUT_TEXT_COLOR};
 `;
 
 export const Button = styled.TouchableOpacity``;
