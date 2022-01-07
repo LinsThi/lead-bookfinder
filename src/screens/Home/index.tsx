@@ -29,9 +29,7 @@ export function Home() {
   const [searchBook, setSearchBook] = useState('');
 
   useEffect(() => {
-    if (searchBook) {
-      dispatch(searchBookAction(9, searchBook));
-    } else {
+    if (searchBook === '') {
       dispatch(restoreBookListAction());
     }
   }, [dispatch, searchBook]);
@@ -68,6 +66,17 @@ export function Home() {
     );
   }
 
+  const FoaterList = useCallback(
+    ({ load }) => {
+      if (!load) return null;
+
+      return (
+        <S.Indicator size="large" color={Colors.BACKGROUND_GRADIENT_DARK} />
+      );
+    },
+    [Colors.BACKGROUND_GRADIENT_DARK],
+  );
+
   return (
     <S.Container>
       <S.ContainerInfo>
@@ -78,19 +87,23 @@ export function Home() {
             iconType="materialCommunityIcons"
             value={searchBook}
             onChangeText={setSearchBook}
+            searchBook={searchBook}
           />
         </S.ContainerSearch>
 
         <S.ContainerBooks>
-          {loadingSearchBooks ? (
-            <S.Indicator size="large" color={Colors.BACKGROUND_GRADIENT_DARK} />
-          ) : listBooks.length !== 0 ? (
+          {listBooks.length !== 0 ? (
             <S.FlatBooks
-              data={listBooks.items}
-              extraData={listBooks.items}
+              data={listBooks}
+              extraData={listBooks}
               keyExtractor={(_, index) => String(index)}
               renderItem={renderBooks}
               showsVerticalScrollIndicator={false}
+              onEndReached={() =>
+                dispatch(searchBookAction(listBooks.length, searchBook))
+              }
+              onEndReachedThreshold={0.3}
+              ListFooterComponent={<FoaterList load={loadingSearchBooks} />}
             />
           ) : (
             <>
