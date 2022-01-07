@@ -1,5 +1,7 @@
-import { all, call, takeLatest, put } from 'redux-saga/effects';
+import { useSelector } from 'react-redux';
+import { all, call, takeLatest, put, select } from 'redux-saga/effects';
 
+import type { AplicationState } from '~/@types/Entity/AplicationState';
 import { searchBooks } from '~/services/books';
 
 import { searchBookErrorAction, searchBookSucessAction } from './action';
@@ -24,7 +26,19 @@ function* GetBookSagas(action: SearchBookProps) {
     );
 
     if (response.status >= 200 && response.status < 300) {
-      yield put(searchBookSucessAction(response.data));
+      const { listBooks } = yield select(
+        (state: AplicationState) => state.books,
+      );
+
+      let allBooks = [];
+
+      if (action.payload.index === 0) {
+        allBooks = response.data.items;
+      } else {
+        allBooks = [...listBooks, ...response.data.items];
+      }
+
+      yield put(searchBookSucessAction(allBooks));
     } else {
       yield put(searchBookErrorAction());
     }

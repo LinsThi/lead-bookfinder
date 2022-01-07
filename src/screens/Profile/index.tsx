@@ -29,7 +29,6 @@ interface DataProps {
   email: string;
   birthDate: string;
   gender: GenderProps;
-  password: string;
   newPassword: string;
   confirmNewPassword: string;
 }
@@ -40,7 +39,6 @@ export function Profile() {
 
   const [image, setImage] = useState('');
   const [visible, setVisible] = useState(false);
-  const [showPassword, setShowPassword] = useState(false);
   const [showNewPassword, setShowNewPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
@@ -74,7 +72,6 @@ export function Profile() {
         email: currentUser.email,
         birthDate: currentUser.birthDate,
         gender: currentUser.gender,
-        password: '',
         newPassword: '',
         confirmNewPassword: '',
       },
@@ -178,23 +175,13 @@ export function Profile() {
         />
 
         <Input
-          placeholder="Senha"
-          iconLeft="lock"
-          value={values.password}
-          onChangeText={handleChange('password')}
-          secureTextEntry={!showPassword}
-          iconAction={() => setShowPassword(!showPassword)}
-          iconRight={showPassword ? 'eye-off' : 'eye'}
-        />
-
-        <Input
           placeholder="Nova Senha"
           iconLeft="lock"
           value={values.newPassword}
           onChangeText={handleChange('newPassword')}
           secureTextEntry={!showNewPassword}
           iconAction={() => setShowNewPassword(!showNewPassword)}
-          iconRight={showPassword ? 'eye-off' : 'eye'}
+          iconRight={showNewPassword ? 'eye-off' : 'eye'}
         />
 
         <Input
@@ -204,7 +191,7 @@ export function Profile() {
           onChangeText={handleChange('confirmNewPassword')}
           secureTextEntry={!showConfirmPassword}
           iconAction={() => setShowConfirmPassword(!showConfirmPassword)}
-          iconRight={showPassword ? 'eye-off' : 'eye'}
+          iconRight={showConfirmPassword ? 'eye-off' : 'eye'}
         />
 
         <Button

@@ -17,9 +17,11 @@ export const Container = styled.View`
   background: ${({ theme }) => theme.Colors.SEARCH_BAR_COLOR};
   border-radius: 7px;
   padding: 5px 5px;
+  align-items: center;
 `;
 
 export const InputSearch = styled.TextInput<TextInputProps>`
+  width: 85%;
   padding: 0px 10px;
   font-size: ${({ fontSize }) => fontSize}px;
   font-style: italic;
@@ -33,3 +35,5 @@ export const IconInput = styled(Icon).attrs<IconProps>(
     color: theme.Colors.ICON_COLOR_HEADER,
   }),
 )<IconProps>``;
+
+export const Button = styled.TouchableOpacity``;
